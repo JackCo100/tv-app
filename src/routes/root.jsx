@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Card from'react-bootstrap/Card';
 import Navbar  from 'react-bootstrap/Navbar';
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,11 +47,21 @@ function Root() {
           </Form.Group>
         </Form>
       </Container>
-      <ul>
-        {results.map(results =>
-            <li>{results.show.name}</li>
-        )}
-      </ul>
+      <Container fluid="xl">
+        <Row>
+            {results.map(results =>
+                <Card key={results.show.id} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={results.show.image != null ? results.show.image.original : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} />
+                <Card.Body>
+                    <Card.Title>{results.show.name}</Card.Title>
+                    <Card.Text>
+                    {results.show.genres.toString()}
+                    </Card.Text>
+                </Card.Body>
+                </Card>
+            )}
+        </Row>
+        </Container>
     </>
   )
 }
