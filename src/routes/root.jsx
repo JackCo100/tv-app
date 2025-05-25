@@ -20,7 +20,7 @@ function Root() {
     const handleSearch = (event) => {
         event.preventDefault()
         axios
-            .get("https://api.tvmaze.com/search/shows?q=" + searchTerm)
+            .get("https://api.tvmaze.com/search/shows?q=" + encodeURIComponent(searchTerm))
             .then((response) => {
                 setResults(response.data);
                 console.log(results)
