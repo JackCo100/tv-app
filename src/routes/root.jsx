@@ -57,6 +57,7 @@ function Root() {
                     <Card.Text>
                     {results.show.genres.toString()}
                     </Card.Text>
+                    <Card.Link href={"/detail/"+ results.show.id}>Details</Card.Link>
                 </Card.Body>
                 </Card>
             )}
