@@ -14,8 +14,9 @@ function App() {
         <Navbar.Brand >TV Lovers</Navbar.Brand>
       </Navbar>
         
-      <Container fluid="xl" id="mainContent">
-        
+      <Container fluid="xl" id="searchBar">
+        <h1>For the TV obsessed</h1>
+        <p>Find out everything about your favourite TV shows.</p>
         <Form>
           <Form.Group className="mb-3" controlId="formSearch">
             <Form.Label>Search</Form.Label>
