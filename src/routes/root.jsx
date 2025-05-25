@@ -5,8 +5,19 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Navbar  from 'react-bootstrap/Navbar';
+import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Root() {
+    const [searchTerm, setSearchTerm] = useState('')
+
+    const handleSearchTermChange = (event) => {
+    setSearchTerm(event.target.value)
+  }
+    const handleSearch = (event) => {
+        event.preventDefault()
+        console.log(searchTerm)
+    }
 
   return (
     <>
@@ -17,10 +28,10 @@ function Root() {
       <Container fluid="xl" id="searchBar">
         <h1>For the TV obsessed</h1>
         <p>Find out everything about your favourite TV shows.</p>
-        <Form>
+        <Form onSubmit = {handleSearch}>
           <Form.Group className="mb-3" controlId="formSearch">
             <Form.Label>Search</Form.Label>
-            <Form.Control type="text" placeholder="Search for TV show" />
+            <Form.Control value={searchTerm} onChange={handleSearchTermChange} type="text" placeholder="Search for TV show" />
             <Button variant="primary" type="submit">
               Search
             </Button>

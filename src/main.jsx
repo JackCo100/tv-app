@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from "react-router";
 import Root from "./routes/root";
-import Result from './routes/results';
+import Detail from './routes/detail';
 
 const router = createBrowserRouter([
   {
@@ -15,8 +15,8 @@ const router = createBrowserRouter([
     element: <Root />,
   },
   {
-    path: "results",
-    element: <Result />
+    path: "detail",
+    element: <Detail />
   }
 ]);
 
