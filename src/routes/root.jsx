@@ -30,28 +30,34 @@ function Root() {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Navbar.Brand >TV Lovers</Navbar.Brand>
+      <Navbar expand="lg" bg="dark" data-bs-theme="dark" >
+        <Container>
+          <Navbar.Brand href="/">TV Lovers</Navbar.Brand>
+        </Container>
       </Navbar>
         
-      <Container fluid="xl" id="searchBar">
+      <Container fluid="xl" id="searchBar" className="p-3">
         <h1>For the TV obsessed</h1>
         <p>Find out everything about your favourite TV shows.</p>
         <Form onSubmit = {handleSearch}>
           <Form.Group className="mb-3" controlId="formSearch">
-            <Form.Label>Search</Form.Label>
-            <Form.Control value={searchTerm} onChange={handleSearchTermChange} type="text" placeholder="Search for TV show" />
-            <Button variant="primary" type="submit">
-              Search
-            </Button>
+            <Row>
+              <Col>
+                <Form.Control value={searchTerm} onChange={handleSearchTermChange} type="text" placeholder="Search for TV show" />
+              </Col>
+              <Col>
+                <Button variant="primary" type="submit">Search </Button>
+              </Col>
+            </Row>
           </Form.Group>
         </Form>
       </Container>
-      <Container fluid="xl">
+      <Container fluid="xl" id="searchResults">
         <Row>
             {results.map(results =>
-                <Card key={results.show.id} style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={results.show.image != null ? results.show.image.original : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} />
+            <Col sm={3}>
+                <Card key={results.show.id} >
+                <Card.Img variant="top" src={results.show.image != null ? results.show.image.medium : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} sm={3}/>
                 <Card.Body>
                     <Card.Title>{results.show.name}</Card.Title>
                     <Card.Text>
@@ -60,6 +66,7 @@ function Root() {
                     <Card.Link href={"/detail/"+ results.show.id}>Details</Card.Link>
                 </Card.Body>
                 </Card>
+                </Col>
             )}
         </Row>
         </Container>
