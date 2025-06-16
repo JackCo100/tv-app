@@ -3,36 +3,34 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from'react-bootstrap/Card';
+import Card from'../Components/Card';
 //import Navbar  from 'react-bootstrap/Navbar';
 import Navbar from '../Components/Navbar'
 import { useState, useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 
 function ResultsContainer({results, showResults, searchTerm}){
   console.log(showResults)
   if (showResults == true)
   return(
-  <Container fluid="xl" id="searchResults">
-    <h3>Search results for: {searchTerm}</h3>
-      <Row>
-          {results.map(results =>
-          <Col sm={3}>
-              <Card key={results.show.id} >
-              <Card.Img variant="top" src={results.show.image != null ? results.show.image.medium : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} sm={3}/>
-              <Card.Body>
-                  <Card.Title>{results.show.name}</Card.Title>
-                  <Card.Text>
-                  {results.show.genres.toString()}
-                  </Card.Text>
-                  <Card.Link href={"/detail/"+ results.show.id}>Details</Card.Link>
-              </Card.Body>
-              </Card>
-              </Col>
-          )}
-      </Row>
-  </Container>
+    <>
+      <h3>Search results for: {searchTerm}</h3>
+      <div class="cardGrid">
+        
+              {results.map(results =>
+              <Card 
+                key = {results.show.id}
+                imageUrl={results.show.image != null ? results.show.image.medium : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} 
+                title = {results.show.name}
+                genres = {results.show.genres}
+                showId = {results.show.id}
+                
+                />
+
+              )}
+      </div>
+      </>
 
 )}
 
@@ -43,6 +41,7 @@ function Root() {
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value)
+        console.log(searchTerm)
     }
     
 
@@ -66,9 +65,14 @@ function Root() {
   </Navbar>*/}
   <Navbar />
         
-      <Container fluid="xl" id="searchBar" className="p-3">
+      <div id="searchBar">
         <h1>For the TV obsessed</h1>
         <p>Find out everything about your favourite TV shows.</p>
+        <form onSubmit={handleSearch}>
+          <input value={searchTerm} onChange={handleSearchTermChange} type="text" placeholder="Search for TV show" />
+          <button type="submit">Search </button>
+        </form>
+        {/* <SearchForm value = {searchTerm} onChange = {handleSearchTermChange} onSubmit={handleSearch}/>
         <Form onSubmit = {handleSearch}>
           <Form.Group className="mb-3" controlId="formSearch">
             <Row>
@@ -80,8 +84,8 @@ function Root() {
               </Col>
             </Row>
           </Form.Group>
-        </Form>
-      </Container>
+</Form> */}
+      </div>
       <ResultsContainer results ={results} showResults={showResults} searchTerm={searchTerm}/>
     </>
   )

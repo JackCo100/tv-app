@@ -1,0 +1,26 @@
+.card{
+    background-color: #f1f1f1;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    margin: 5px;
+  
+
+}
+
+.card img{
+    width: 100%;
+
+}
+
+.card a:link{
+    text-decoration: none;
+}
+
+.card a:visited{
+    text-decoration: none;
+    color: blue;
+}
+

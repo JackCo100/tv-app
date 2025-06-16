@@ -1,17 +1,31 @@
 #searchBar{
     background-color: rgb(187, 187, 187);
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
 }
 
-#DetailCard{
+.detailCard{
     padding: 20px;
     margin-top: 10px;
+    max-width: 1200px;
+}
+.detailCard img{
+    max-width: 300px;
 }
 
-#searchResults{
-    padding:20px;
+.cardGrid{
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin: auto;
+    max-width: 1200px;
 }
 
-#searchResults .card{
-    margin:10px;
-    padding:10px;
+p, h1, h2, h3, h4, h5{
+    font-family: sans-serif;
+}
+
+body {
+    margin:0;
 }
