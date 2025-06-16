@@ -4,7 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from'react-bootstrap/Card';
-import Navbar  from 'react-bootstrap/Navbar';
+//import Navbar  from 'react-bootstrap/Navbar';
+import Navbar from '../Components/Navbar'
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
@@ -58,11 +59,12 @@ function Root() {
 
   return (
     <>
-      <Navbar expand="lg" bg="dark" data-bs-theme="dark" >
+      {/*<Navbar expand="lg" bg="dark" data-bs-theme="dark" >
         <Container>
           <Navbar.Brand href="/">TV Lovers</Navbar.Brand>
         </Container>
-      </Navbar>
+  </Navbar>*/}
+  <Navbar />
         
       <Container fluid="xl" id="searchBar" className="p-3">
         <h1>For the TV obsessed</h1>

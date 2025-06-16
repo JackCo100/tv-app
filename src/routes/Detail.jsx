@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import Navbar  from 'react-bootstrap/Navbar';
+//import Navbar  from 'react-bootstrap/Navbar';
+import Navbar from '../Components/Navbar'
 import { useParams } from "react-router";
 import axios from 'axios'
 import { Col, Container, Image, Row } from 'react-bootstrap';
@@ -19,11 +20,7 @@ function Detail() {
 
     return(
       <>
-        <Navbar expand="lg" bg="dark" data-bs-theme="dark" >
-          <Container>
-            <Navbar.Brand href="/">TV Lovers</Navbar.Brand>
-          </Container>
-        </Navbar>
+        <Navbar />
         <Container fluid="xl" id="DetailCard">
           <Row> 
             <Col sm={3}>
