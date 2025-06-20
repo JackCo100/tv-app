@@ -5,13 +5,14 @@
     padding: 20px;
     font-size: 30px;
     text-align: center;
-    margin: 5px;
-  
-
+    margin: 10px;
+    height:500px;
+    width: 220px;
 }
 
 .card img{
-    width: 100%;
+    max-width: 100%;
+    max-height: 200px;
 
 }
 

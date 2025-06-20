@@ -5,27 +5,30 @@
     padding: 20px;
 }
 
-.detailCard{
-    padding: 20px;
-    margin-top: 10px;
-    max-width: 1200px;
-}
-.detailCard img{
-    max-width: 300px;
-}
 
-.cardGrid{
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-    margin: auto;
-    max-width: 1200px;
-}
 
 p, h1, h2, h3, h4, h5{
     font-family: sans-serif;
 }
 
+p {
+    font-size: 20px;
+}
+
 body {
     margin:0;
+}
+
+.resultContent{
+    margin: auto;
+    text-align: center;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: flex-start;
+     align-content: space-evenly;
 }

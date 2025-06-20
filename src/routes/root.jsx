@@ -1,8 +1,3 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Card from'../Components/Card';
 //import Navbar  from 'react-bootstrap/Navbar';
 import Navbar from '../Components/Navbar'
@@ -11,24 +6,22 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function ResultsContainer({results, showResults, searchTerm}){
-  console.log(showResults)
   if (showResults == true)
   return(
     <>
       <h3>Search results for: {searchTerm}</h3>
-      <div class="cardGrid">
-        
-              {results.map(results =>
-              <Card 
-                key = {results.show.id}
-                imageUrl={results.show.image != null ? results.show.image.medium : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} 
-                title = {results.show.name}
-                genres = {results.show.genres}
-                showId = {results.show.id}
-                
-                />
+      <div class="flex-container">
+        {results.map(results =>
+          <Card 
+            key = {results.show.id}
+            imageUrl={results.show.image != null ? results.show.image.medium : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930"} 
+            title = {results.show.name}
+            genres = {results.show.genres}
+            showId = {results.show.id}
+            
+            />
 
-              )}
+        )}
       </div>
       </>
 
@@ -72,6 +65,7 @@ function Root() {
           <input value={searchTerm} onChange={handleSearchTermChange} type="text" placeholder="Search for TV show" />
           <button type="submit">Search </button>
         </form>
+      </div>
         {/* <SearchForm value = {searchTerm} onChange = {handleSearchTermChange} onSubmit={handleSearch}/>
         <Form onSubmit = {handleSearch}>
           <Form.Group className="mb-3" controlId="formSearch">
@@ -85,8 +79,9 @@ function Root() {
             </Row>
           </Form.Group>
 </Form> */}
+      <div class="resultContent">
+        <ResultsContainer results ={results} showResults={showResults} searchTerm={searchTerm}/>
       </div>
-      <ResultsContainer results ={results} showResults={showResults} searchTerm={searchTerm}/>
     </>
   )
 }
