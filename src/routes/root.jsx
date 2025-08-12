@@ -4,6 +4,7 @@ import Navbar from '../Components/Navbar'
 import { useState, useEffect } from 'react'
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
+import SearchBar from '../components/SearchBar';
 
 function ResultsContainer({results, showResults, searchTerm}){
   if (showResults == true)
@@ -57,8 +58,8 @@ function Root() {
         </Container>
   </Navbar>*/}
   <Navbar />
-        
-      <div id="searchBar">
+      <SearchBar handleSearch={handleSearch} searchTerm={searchTerm} handleSearchTermChange={handleSearchTermChange}/>
+      {/*<div id="searchBar">
         <h1>For the TV obsessed</h1>
         <p>Find out everything about your favourite TV shows.</p>
         <form onSubmit={handleSearch}>
@@ -66,7 +67,7 @@ function Root() {
           <button type="submit">Search </button>
         </form>
       </div>
-        {/* <SearchForm value = {searchTerm} onChange = {handleSearchTermChange} onSubmit={handleSearch}/>
+         <SearchForm value = {searchTerm} onChange = {handleSearchTermChange} onSubmit={handleSearch}/>
         <Form onSubmit = {handleSearch}>
           <Form.Group className="mb-3" controlId="formSearch">
             <Row>
