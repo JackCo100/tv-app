@@ -52,36 +52,12 @@ function Root() {
 
   return (
     <>
-      {/*<Navbar expand="lg" bg="dark" data-bs-theme="dark" >
-        <Container>
-          <Navbar.Brand href="/">TV Lovers</Navbar.Brand>
-        </Container>
-  </Navbar>*/}
-  <Navbar />
-      <SearchBar handleSearch={handleSearch} searchTerm={searchTerm} handleSearchTermChange={handleSearchTermChange}/>
-      {/*<div id="searchBar">
-        <h1>For the TV obsessed</h1>
-        <p>Find out everything about your favourite TV shows.</p>
-        <form onSubmit={handleSearch}>
-          <input value={searchTerm} onChange={handleSearchTermChange} type="text" placeholder="Search for TV show" />
-          <button type="submit">Search </button>
-        </form>
-      </div>
-         <SearchForm value = {searchTerm} onChange = {handleSearchTermChange} onSubmit={handleSearch}/>
-        <Form onSubmit = {handleSearch}>
-          <Form.Group className="mb-3" controlId="formSearch">
-            <Row>
-              <Col>
-                <Form.Control value={searchTerm} onChange={handleSearchTermChange} type="text" placeholder="Search for TV show" />
-              </Col>
-              <Col>
-                <Button variant="primary" type="submit">Search </Button>
-              </Col>
-            </Row>
-          </Form.Group>
-</Form> */}
-      <div class="resultContent">
-        <ResultsContainer results ={results} showResults={showResults} searchTerm={searchTerm}/>
+      <Navbar />
+      <div className='main-content'>
+        <SearchBar handleSearch={handleSearch} searchTerm={searchTerm} handleSearchTermChange={handleSearchTermChange}/>
+        <div class="resultContent">
+          <ResultsContainer results ={results} showResults={showResults} searchTerm={searchTerm}/>
+        </div>
       </div>
     </>
   )
