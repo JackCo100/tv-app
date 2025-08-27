@@ -3,6 +3,7 @@
 ## Installation
 
 Requires Node.js 22.17.0
+
 To install
 `npm install`
 
