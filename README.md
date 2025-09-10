@@ -1,8 +1,9 @@
-#Basic TV show search using React
+# Basic TV show search using React
 
-##Installation
+## Installation
 
 Requires Node.js 22.17.0
+
 To install
 `npm install`
 
