@@ -1,8 +1,6 @@
 import Card from'../Components/Card';
-//import Navbar  from 'react-bootstrap/Navbar';
 import Navbar from '../Components/Navbar'
 import { useState, useEffect } from 'react'
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import SearchBar from '../components/SearchBar';
 
