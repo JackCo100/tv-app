@@ -5,8 +5,8 @@ import axios from 'axios'
 
 function Detail() {
   const [result,setResult] = useState([])
-  const urlBuilder = "https://api.tvmaze.com/shows/" + String(useParams().id)
-  console.log(urlBuilder)
+  const urlBuilder = process.env.apiBaseUrl + "/shows/" + String(useParams().id)
+  console.log(process.env.apiBaseUrl)
   useEffect(() => {
     axios
               .get(urlBuilder)
