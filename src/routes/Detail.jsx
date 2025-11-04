@@ -5,8 +5,7 @@ import axios from 'axios'
 
 function Detail() {
   const [result,setResult] = useState([])
-  const urlBuilder = process.env.apiBaseUrl + "/shows/" + String(useParams().id)
-  console.log(process.env.apiBaseUrl)
+  const urlBuilder = import.meta.env.VITE_apiBaseUrl + "/shows/" + String(useParams().id)
   useEffect(() => {
     axios
               .get(urlBuilder)
