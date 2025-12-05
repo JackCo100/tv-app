@@ -10,3 +10,7 @@ To install
 To run dev mode
 `npm run dev`
 
+
+
+add unit tests for components
+code coverage report 85%
