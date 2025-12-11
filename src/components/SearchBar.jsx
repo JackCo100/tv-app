@@ -1,7 +1,7 @@
 import styles from './SearchBar.module.css'
 export default function SearchBar( {handleSearch, searchTerm, handleSearchTermChange}){
     return(
-    <div id={styles.searchBar}>
+    <div id={styles.searchBar} data-testid="searchBar">
         <h1>For the TV obsessed</h1>
         <p>Find out everything about your favourite TV shows.</p>
         <form onSubmit={handleSearch}>

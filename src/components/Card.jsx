@@ -6,7 +6,7 @@ function Card( {imageUrl, title, genres, showId }){
          <div className={styles.card}>
             <img src={imageUrl}/>
             <div className="detail">
-                <h4>{title}</h4>
+                <h4 data-testid="cardTitle">{title}</h4>
                 <p>{genres.toString()}</p>
                 <a href={"/detail/"+ showId}>Details</a>
             </div>
