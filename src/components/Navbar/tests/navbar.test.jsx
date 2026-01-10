@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import NavBar from "../components/Navbar";
+import NavBar from "../Navbar";
 
 describe("Navbar component", () => {
   it("should navbar", () => {

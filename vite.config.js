@@ -6,7 +6,9 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     setupFiles: './src/tests/setup.js',
-    include: ['src/tests/**/*.test.jsx'],
+    include: ['src/tests/**/*.test.jsx',
+              'src/components/**/tests/*.test.jsx'
+    ],
     coverage: {
       enabled: true
     },
