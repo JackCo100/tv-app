@@ -1,8 +1,8 @@
-import Card from'../Components/Card';
-import Navbar from '../Components/Navbar'
+import Card from'../Components/Card/Card';
+import Navbar from '../components/Navbar/Navbar'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import SearchBar from '../components/SearchBar';
+import SearchBar from '../components/Searchbar/SearchBar';
 
 function ResultsContainer({results, showResults, searchTerm}){
   if (showResults == true)
