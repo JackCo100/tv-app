@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import SearchBar from '../SearchBar';
+import SearchBar from '.';
 
 describe("Search Bar component", () => {
   it("should display search bar", () => {

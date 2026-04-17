@@ -1,27 +1,46 @@
 .card{
-    background-color: #f1f1f1;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-    margin: 10px;
-    height:500px;
-    width: 220px;
+    background-color: var(--color-gray-0);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--box-shadow);
+    }
 }
 
-.card img{
-    max-width: 100%;
-    max-height: 200px;
-
+.thumbnail {
+    display: block;
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
 }
 
-.card a:link{
-    text-decoration: none;
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4, 4px);
+    padding: var(--spacing-16, 16px);
+    * {
+        margin: 0;
+    }
 }
 
-.card a:visited{
-    text-decoration: none;
-    color: blue;
+.cardTitle {
+    font-size: var(--fs-24, 24px);
+    font-weight: var(--fw-700, 700);
 }
 
+.cardData {
+    font-size: var(--fs-12, 12px);
+}
+
+.cardLink {
+    color: var(--color-primary);
+    &:link, &:visited {
+        text-decoration: none;
+    }
+    &:focus, &:hover, &:active {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+}
