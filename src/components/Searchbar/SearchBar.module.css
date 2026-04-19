@@ -10,7 +10,6 @@
   font-size: var(--fs-16);
   margin-right: var(--spacing-8);
   padding: var(--spacing-12);
-
   width: calc(100% - 120px);
   &:focus {
     background-color: var(--color-gray-0);
