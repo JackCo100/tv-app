@@ -31,4 +31,3 @@ root.render(
     </StoreProvider>
   </StrictMode>,
 );
-s;

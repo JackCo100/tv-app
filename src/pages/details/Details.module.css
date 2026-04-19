@@ -30,6 +30,22 @@
   padding: 10px;
   border-radius: 5px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  & h3,
+  & p {
+    margin: 0;
+    font-size: var(--fs-14);
+    font-weight: var(--fw-500);
+  }
+  & .altShowLink {
+    color: var(--color-blue-600);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .externalLinksIcon {
@@ -37,10 +53,7 @@
   width: 40px;
 }
 
-.episodesContainer {
-}
 .episodeCard {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-8);
@@ -51,6 +64,17 @@
   & .episodeTitle {
     font-size: var(--fs-14);
     font-weight: var(--fw-500);
+    margin: 0;
+  }
+}
+
+.castContainer {
+  & .actorImage {
+    display: block;
+    width: 100%;
+  }
+  & .actorName {
+    font-size: var(--fs-14);
     margin: 0;
   }
 }

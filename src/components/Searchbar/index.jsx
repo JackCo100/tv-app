@@ -1,7 +1,8 @@
 import styles from './Searchbar.module.css';
 import { useStore } from '../../store';
 import { useEffect } from 'react';
-import { getShows } from '../../api';
+import { getSearchedShows, getShows } from '../../api';
+import { debounce } from '../../utils/debounce';
 
 export const Searchbar = () => {
   const { query, setQuery, setShows } = useStore();
@@ -9,20 +10,29 @@ export const Searchbar = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    getShows(query).then((data) => {
-      setShows(data);
-    });
+    setQuery(query);
+  };
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    setQuery(e.target.value);
+    url.searchParams.set('q', e.target.value);
+    window.history.replaceState({}, '', url);
   };
 
   useEffect(() => {
     const q = url.searchParams.get('q');
     if (q) {
       setQuery(q);
-      getShows(q).then((data) => {
+      getSearchedShows(q).then((data) => {
         setShows(data);
       });
+      return;
     }
-  }, []);
+    getShows().then((data) => {
+      setShows(data);
+    });
+  }, [, query]);
 
   return (
     <div className={styles.searchBar}>
@@ -30,15 +40,7 @@ export const Searchbar = () => {
         <input
           type="text"
           value={query}
-          onChange={(e) => {
-            e.preventDefault();
-            setQuery(e.target.value);
-            url.searchParams.set('q', e.target.value);
-            window.history.replaceState({}, '', url);
-            getShows(e.target.value).then((data) => {
-              setShows(data);
-            });
-          }}
+          onChange={handleInputChange}
           placeholder="Search for shows..."
           className={styles.searchInput}
         />

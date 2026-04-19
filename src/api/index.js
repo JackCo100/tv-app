@@ -6,6 +6,7 @@ import {
   showsEndpoint,
   singleSearchEndpoint,
   alternateShowsEndpoint,
+  castEndpoint,
 } from './endpoints';
 
 // export const showSearchUrl = (query) =>
@@ -44,7 +45,7 @@ export const topShowsUrl = (page, params) => {
   return url;
 };
 
-export const getShows = async (query) => {
+export const getShows = async () => {
   let url = `${apiBaseUrl}${showsEndpoint}`;
   const response = await fetch(url);
   return await response.json();
@@ -59,6 +60,13 @@ export const getSearchedShows = async (query) => {
 
 export const getShowDetails = async (id) => {
   const url = `${apiBaseUrl}${showDetailsEndpoint.replace('{id}', id)}`;
+  const response = await fetch(url);
+  return await response.json();
+};
+
+export const getCast = async (id) => {
+  if (!id) return [];
+  const url = `${apiBaseUrl}${castEndpoint.replace('{id}', id)}`;
   const response = await fetch(url);
   return await response.json();
 };

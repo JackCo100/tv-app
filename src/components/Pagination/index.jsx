@@ -62,17 +62,6 @@ function usePagination({ totalPages, currentPage, siblingCount = 1 }) {
   }, [totalPages, currentPage, siblingCount]);
 }
 
-/**
- * Pagination component
- *
- * Props:
- * - currentPage: number (1-based)
- * - totalPages: number
- * - onPageChange: (page) => void
- * - siblingCount: number
- * - showFirstLast: boolean
- * - className: optional class for container
- */
 export const Pagination = ({
   currentPage,
   totalPages,
@@ -113,8 +102,8 @@ export const Pagination = ({
           onClick={onFirst}
           disabled={currentPage === 1}
           aria-label="First page"
+          className={`${styles.anchorIcon} ${currentPage === 1 ? styles.disabled : ''}`}
           style={{
-            padding: '6px 10px',
             cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
           }}
         />
@@ -124,10 +113,7 @@ export const Pagination = ({
         onClick={onPrev}
         disabled={currentPage === 1}
         aria-label="Previous page"
-        style={{
-          padding: '6px 10px',
-          cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-        }}
+        className={`${styles.anchorIcon} ${currentPage === 1 ? styles.disabled : ''}`}
       />
 
       {paginationRange.map((page, idx) => {
@@ -162,10 +148,7 @@ export const Pagination = ({
         onClick={onNext}
         disabled={currentPage === totalPages}
         aria-label="Next page"
-        style={{
-          padding: '6px 10px',
-          cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-        }}
+        className={`${styles.anchorIcon} ${currentPage === totalPages ? styles.disabled : ''}`}
       />
 
       {showFirstLast && (
@@ -174,10 +157,7 @@ export const Pagination = ({
             onClick={onLast}
             disabled={currentPage === totalPages}
             aria-label="Last page"
-            style={{
-              padding: '6px 10px',
-              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-            }}
+            className={`${styles.anchorIcon} ${currentPage === totalPages ? styles.disabled : ''}`}
           />
         </>
       )}
