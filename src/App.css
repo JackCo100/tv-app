@@ -1,15 +1,19 @@
-
-
-a,p, h1, h2, h3, h4, h5{
-    font-family: var(--ff);
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--ff);
 }
 
 p {
-    font-size: var(--fs-16);
+  font-size: var(--fs-16);
 }
 
 body {
-    margin:0;
+  margin: 0;
 }
 
 .main {
@@ -18,53 +22,34 @@ body {
 
 .mainContent {
   min-height: calc(100dvh - 240px);
-  padding: var(--spacing-16);
+  padding: 0 var(--spacing-16);
 }
 
-.imageContainer img{
-    max-width: 100%;
-    height: auto;
+.resultContent {
+  margin: auto;
+  text-align: center;
 }
 
-.backButton{
-  background-color: var(--color-gray-100);
-  border: 0;
-  color: var(--color-gray-800);
-  cursor: pointer;
-  display: inline-block;
-  margin-bottom: var(--spacing-16);
-  padding: var(--spacing-8) var(--spacing-16);
-  &:hover{
-    background-color: var(--color-gray-200);
-  }
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: flex-start;
+  align-content: space-evenly;
 }
 
-.resultContent{
-    margin: auto;
-    text-align: center;
-}
-
-.flex-container{
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: auto;
-    justify-content: flex-start;
-    align-content: space-evenly;
-}
-
-.detail-container{
+.detail-container {
   display: grid;
-  grid-template-columns: auto auto ;
+  grid-template-columns: auto auto;
   grid-gap: 10px;
   padding: 20px;
   max-width: 1200px;
   margin: auto;
-   
 }
 
-.detailImage img{
-    max-width: 250px;
+.detailImage img {
+  max-width: 250px;
 }
 
 @media only screen and (max-width: 1200px) {
