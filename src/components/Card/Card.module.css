@@ -1,6 +1,5 @@
 .card {
   background-color: var(--color-gray-0);
-  border: 1px solid var(--border-color);
   overflow: hidden;
   position: relative;
   transition:

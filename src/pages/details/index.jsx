@@ -1,39 +1,48 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import { Layout } from '../layout';
-import { Container, Grid, Item } from '../../components/Grid';
-import { getCast, getShowDetails } from '../../api';
-import { FiChevronLeft } from 'react-icons/fi';
-import { FaImdb } from 'react-icons/fa';
-import { useStore } from '../../store';
-import styles from './Details.module.css';
-import { Tabs } from '../../components/Tabs';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Layout } from "../layout";
+import { Container, Grid, Item } from "../../components/Grid";
+import { getCast, getShowDetails } from "../../api";
+import { FiChevronLeft } from "react-icons/fi";
+import { FaImdb } from "react-icons/fa";
+import { useStore } from "../../store";
+import { Tabs } from "../../components/Tabs";
+import { Hero } from "../../components/Hero";
+import styles from "./Details.module.css";
 
 export const Details = () => {
   const [seasons, setSeasons] = useState({});
-  const { shows, setShows, cast, setCast, alternateShows, setAlternateShows } = useStore();
+  const { shows, setShows, cast, setCast, alternateShows, setAlternateShows } =
+    useStore();
   const { id } = useParams();
 
   useEffect(() => {
     getShowDetails(id).then((data) => {
       setShows(data);
       setSeasons(
-        Object.entries(Object.groupBy(data?._embedded.episodes, ({ season }) => season)),
+        Object.entries(
+          Object.groupBy(data?._embedded.episodes, ({ season }) => season),
+        ),
       );
     });
     getCast(id).then((data) => {
       setCast(data);
     });
   }, [id]);
-  console.log('cast', cast);
+  console.log("cast", cast);
   return (
     <Layout>
-      <Container className={'mainContent'}>
+      <Container>
         <FiChevronLeft
           onClick={() => window.history.back()}
           className={styles.backButton}
         />
+        <div
+          className={styles.backgroundImage}
+          style={{
+            backgroundImage: `url(${shows?.image?.original})`,
+          }}
+        ></div>
         <Grid>
           <Item xxlSpan={3} xlSpan={4} lgSpan={4} mdSpan={4} smSpan={4}>
             <div className={styles.imageContainer}>
@@ -44,7 +53,9 @@ export const Details = () => {
             <div className={styles.detailsContainer}>
               <div dangerouslySetInnerHTML={{ __html: shows?.summary }} />
               {shows?.averageRuntime && <p>Run time: {shows.averageRuntime}</p>}
-              {shows?.genres?.length > 0 && <p>Genres: {shows.genres.join(', ')}</p>}
+              {shows?.genres?.length > 0 && (
+                <p>Genres: {shows.genres.join(", ")}</p>
+              )}
               {shows?.rating?.average && <p>Rating: {shows.rating.average}</p>}
               {shows?.premiered && <p>Premiered: {shows.premiered}</p>}
               {shows?.ended && <p>Ended: {shows.ended}</p>}
@@ -59,35 +70,11 @@ export const Details = () => {
             </div>
           </Item>
         </Grid>
-        {cast?.length > 0 && (
-          <div className={styles.castContainer}>
-            <h3>Cast</h3>
-            <Grid>
-              {cast.map((actor) => (
-                <Item
-                  key={actor.id}
-                  xxlSpan={2}
-                  xlSpan={2}
-                  lgSpan={3}
-                  mdSpan={2}
-                  smSpan={4}
-                >
-                  <img
-                    src={actor.person?.image?.medium}
-                    alt={actor.person.name}
-                    className={styles.actorImage}
-                  />
-                  <p className={styles.actorName}>
-                    {actor.person.name} as {actor.character?.name}
-                  </p>
-                </Item>
-              ))}
-            </Grid>
-          </div>
-        )}
+      </Container>
+      <Container>
         {seasons?.length > 0 && (
           <>
-            <h2>Episodes</h2>
+            <h2 className={styles.sectionTitle}>Episodes</h2>
             <Tabs
               tabs={seasons.map(([seasonNumber, episodes]) => ({
                 id: seasonNumber,
@@ -113,10 +100,36 @@ export const Details = () => {
                   </Grid>
                 ),
               }))}
-              activeTab={'1'}
+              activeTab={"1"}
               onTabChange={() => {}}
             />
           </>
+        )}
+        {cast?.length > 0 && (
+          <div className={styles.castContainer}>
+            <h2 className={styles.sectionTitle}>Cast</h2>
+            <Grid>
+              {cast.map((actor) => (
+                <Item
+                  key={actor.id}
+                  xxlSpan={2}
+                  xlSpan={2}
+                  lgSpan={3}
+                  mdSpan={2}
+                  smSpan={4}
+                >
+                  <img
+                    src={actor.person?.image?.medium}
+                    alt={actor.person.name}
+                    className={styles.actorImage}
+                  />
+                  <p className={styles.actorName}>
+                    {actor.person.name} as {actor.character?.name}
+                  </p>
+                </Item>
+              ))}
+            </Grid>
+          </div>
         )}
       </Container>
     </Layout>

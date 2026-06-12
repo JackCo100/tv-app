@@ -1,33 +1,53 @@
-import { Card } from "../../components/Card";
-import { Searchbar } from "../../components/Searchbar";
 import { Grid, Item } from "../../components/Grid";
 import { Layout } from "../layout";
 import { useStore } from "../../store";
 import { Hero } from "../../components/Hero";
+import { getShows } from "../../api";
+import { useEffect, useState } from "react";
+import { Carousel } from "../../components/Carousel";
+import { heroContent } from "../../content/hero";
 
 export const Home = () => {
-  const { query, shows } = useStore();
+  const { shows, setShows } = useStore();
+  const [groupedShows, setGroupedShows] = useState({});
 
+  useEffect(() => {
+    getShows().then((data) => {
+      setShows(data);
+    });
+  }, [setShows]);
+
+  useEffect(() => {
+    const grouped = shows.reduce((acc, show) => {
+      const genre = show.genres[0] || "Unknown";
+      if (!acc[genre]) {
+        acc[genre] = [];
+      }
+      acc[genre].push(show);
+      return acc;
+    }, {});
+
+    setGroupedShows(grouped);
+  }, [shows]);
+
+  console.log("groupedShows", groupedShows, shows);
   return (
     <Layout>
-      <Hero />
+      <Hero title={heroContent.title} thumbnail={heroContent.thumbnail} />
       <Grid>
         <Item xxlSpan={12} xlSpan={12} lgSpan={12} mdSpan={8} smSpan={4}>
           <div className={"mainContent"}>
-            <h1>Welcome to the TV App</h1>
-            <Searchbar />
-            {query.length > 0 && <p>Search results for "{query}"</p>}
             <Grid>
-              {shows.map((card) => (
+              {Object.keys(groupedShows).map((genre) => (
                 <Item
-                  key={card.id}
-                  xxlSpan={2}
-                  xlSpan={2}
-                  lgSpan={3}
-                  mdSpan={4}
+                  key={genre}
+                  xxlSpan={12}
+                  xlSpan={12}
+                  lgSpan={12}
+                  mdSpan={8}
                   smSpan={4}
                 >
-                  <Card {...card} />
+                  <Carousel title={genre} cards={groupedShows[genre]} />
                 </Item>
               ))}
             </Grid>

@@ -1,10 +1,9 @@
-import styles from './Searchbar.module.css';
-import { useStore } from '../../store';
-import { useEffect } from 'react';
-import { getSearchedShows, getShows } from '../../api';
-import { debounce } from '../../utils/debounce';
+import styles from "./Searchbar.module.css";
+import { useStore } from "../../store";
+import { useEffect } from "react";
+import { getSearchedShows, getShows } from "../../api";
 
-export const Searchbar = () => {
+export const Searchbar = ({ ...props }) => {
   const { query, setQuery, setShows } = useStore();
   const url = new URL(window.location.href);
 
@@ -16,12 +15,12 @@ export const Searchbar = () => {
   const handleInputChange = (e) => {
     e.preventDefault();
     setQuery(e.target.value);
-    url.searchParams.set('q', e.target.value);
-    window.history.replaceState({}, '', url);
+    url.searchParams.set("q", e.target.value);
+    window.history.replaceState({}, "", url);
   };
 
   useEffect(() => {
-    const q = url.searchParams.get('q');
+    const q = url.searchParams.get("q");
     if (q) {
       setQuery(q);
       getSearchedShows(q).then((data) => {
@@ -35,7 +34,7 @@ export const Searchbar = () => {
   }, [, query]);
 
   return (
-    <div className={styles.searchBar}>
+    <div className={styles.searchBar} {...props}>
       <form onSubmit={handleSearch}>
         <input
           type="text"

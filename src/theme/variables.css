@@ -1,5 +1,5 @@
 :root {
-  --color-primary: #0049c7;
+  --color-primary: #000000;
   --color-secondary: #6c757d;
   --color-success: #28a745;
   --color-danger: #dc3545;
@@ -22,13 +22,14 @@
   --light-background: #f0f0f0;
   --dark-background: #343a40;
 
-  --ff: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --ff: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   --fs-14: 14px;
   --fs-16: 16px;
   --fs-18: 18px;
   --fs-20: 20px;
   --fs-24: 24px;
+  --fs-48: 48px;
 
   --fw-400: 400;
   --fw-500: 500;
@@ -62,7 +63,7 @@
   --spacing-64: 64px;
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --color-primary: #375a7f;
   --color-secondary: #444;
   --color-success: #00bc8c;

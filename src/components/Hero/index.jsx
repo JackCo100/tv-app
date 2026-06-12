@@ -1,16 +1,22 @@
-import { heroContent } from "../../content/hero";
+import { Container, Grid, Item } from "../Grid";
 import style from "./Hero.module.css";
-export const Hero = () => {
+
+export const Hero = ({ title, thumbnail }) => {
   return (
     <div className={style.heroContainer}>
-      <h1>{heroContent.title}</h1>
-      <p>{heroContent.description}</p>
-      <button className={style.ctaButton}>{heroContent.ctaText}</button>
-      <img
-        src={heroContent.thumbnail}
-        alt="Hero Thumbnail"
-        className={style.heroThumbnail}
-      />
+      <div
+        className={style.heroThumbnailContainer}
+        style={{ backgroundImage: `url(${thumbnail})` }}
+      ></div>
+      <Container className={style.footerContainer}>
+        <Grid>
+          <Item xxlSpan={2} xlSpan={2} lgSpan={2} mdSpan={8} smSpan={4}></Item>
+          <Item xxlSpan={8} xlSpan={8} lgSpan={8} mdSpan={8} smSpan={4}>
+            <h1 className={style.heroTitle}>{title}</h1>
+          </Item>
+          <Item xxlSpan={2} xlSpan={2} lgSpan={2} mdSpan={8} smSpan={4}></Item>
+        </Grid>
+      </Container>
     </div>
   );
 };

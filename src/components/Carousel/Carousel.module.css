@@ -1,0 +1,42 @@
+.carouselContainer {
+  align-items: center;
+  display: flex;
+  margin: var(--spacing-24) 0;
+}
+
+.carouselTitle {
+  display: flex;
+  color: white;
+  font-size: 24px;
+  font-weight: var(--fw-500);
+  margin: var(--spacing-24) 0;
+}
+
+.carouselItem {
+  margin: 0 var(--spacing-16);
+  transition: all 0.5s ease-in-out;
+  width: stretch;
+  &:hover {
+    box-shadow: var(--box-shadow);
+  }
+  @media (min-width: 550px) {
+    width: auto;
+  }
+}
+
+.chevron {
+  width: 30px;
+  height: 30px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  @media (min-width: 550px) {
+    width: 60px;
+  }
+}

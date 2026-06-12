@@ -5,6 +5,10 @@
   z-index: 3;
 }
 
+.scrolled {
+  background: rgb(1 15 40 / 90%);
+}
+
 .logo {
   font-size: var(--fs-20);
   font-weight: var(--fw-700);
@@ -33,4 +37,10 @@
   &:active {
     border-color: var(--color-gray-0);
   }
+}
+
+.cartIcon {
+  color: var(--color-gray-light);
+  font-size: var(--fs-20);
+  margin: var(--spacing-16) auto;
 }
