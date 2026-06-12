@@ -1,0 +1,14 @@
+.heroContainer {
+  border: 1px solid red;
+  color: white;
+  min-height: 500px;
+}
+
+.heroThumbnail {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}

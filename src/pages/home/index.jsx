@@ -1,17 +1,19 @@
-import { Card } from '../../components/Card';
-import { Searchbar } from '../../components/Searchbar';
-import { Grid, Item } from '../../components/Grid';
-import { Layout } from '../layout';
-import { useStore } from '../../store';
+import { Card } from "../../components/Card";
+import { Searchbar } from "../../components/Searchbar";
+import { Grid, Item } from "../../components/Grid";
+import { Layout } from "../layout";
+import { useStore } from "../../store";
+import { Hero } from "../../components/Hero";
 
 export const Home = () => {
   const { query, shows } = useStore();
 
   return (
     <Layout>
+      <Hero />
       <Grid>
         <Item xxlSpan={12} xlSpan={12} lgSpan={12} mdSpan={8} smSpan={4}>
-          <div className={'mainContent'}>
+          <div className={"mainContent"}>
             <h1>Welcome to the TV App</h1>
             <Searchbar />
             {query.length > 0 && <p>Search results for "{query}"</p>}
