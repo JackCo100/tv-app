@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { Container, Grid, Item } from "../Grid";
 import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { DEVICE, useDevice } from "../../utils/useDevice";
+import { useStore } from "../../store";
 
 export const Header = () => {
   const navLinks = [
@@ -9,6 +12,9 @@ export const Header = () => {
     { name: "Shows", href: "/shows" },
     { name: "Films", href: "/films" },
   ];
+  const device = useDevice();
+  const [whichDevice, setWhichDevice] = useState(device);
+  const { isMobileMenuOpen, setIsMobileMenuOpen } = useStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,21 +32,51 @@ export const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setWhichDevice(device);
+  }, [device, window.innerWidth]);
+
+  const handleHamburgerClick = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  console.log("device", device);
+
   return (
     <header className={styles.header}>
       <Container>
         <Grid>
           <Item xxlSpan={10} xlSpan={10} lgSpan={10} mdSpan={4} smSpan={2}>
             <nav>
-              <ul className={styles.nav}>
-                {navLinks.map((link) => (
-                  <li key={link.name} className={styles.navItem}>
-                    <a href={link.href} className={styles.navLink}>
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              {whichDevice === DEVICE.MOBILE ? (
+                <>
+                  <GiHamburgerMenu
+                    className={styles.hamburgerIcon}
+                    onClick={handleHamburgerClick}
+                  />
+                  {isMobileMenuOpen && (
+                    <ul className={styles.mobileNav}>
+                      {navLinks.map((link) => (
+                        <li key={link.name} className={styles.navItem}>
+                          <a href={link.href} className={styles.navLink}>
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <ul className={styles.nav}>
+                  {navLinks.map((link) => (
+                    <li key={link.name} className={styles.navItem}>
+                      <a href={link.href} className={styles.navLink}>
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </nav>
           </Item>
           <Item xxlSpan={1} xlSpan={1} lgSpan={1} mdSpan={1} smSpan={1}>

@@ -9,7 +9,6 @@
   color: white;
   font-size: 24px;
   font-weight: var(--fw-500);
-  margin: var(--spacing-24) 0;
 }
 
 .carouselItem {

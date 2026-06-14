@@ -39,8 +39,25 @@
   }
 }
 
-.cartIcon {
+.cartIcon,
+.hamburgerIcon {
   color: var(--color-gray-light);
   font-size: var(--fs-20);
   margin: var(--spacing-16) auto;
+}
+
+.mobileNav {
+  background-color: var(--color-gray-dark);
+  display: flex;
+  gap: var(--spacing-16);
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-16) 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  & .navLink {
+    padding: var(--spacing-16);
+  }
 }

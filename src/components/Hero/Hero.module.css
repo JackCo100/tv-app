@@ -15,7 +15,6 @@
 .heroThumbnailContainer {
   background-position: top;
   background-size: cover;
-  filter: blur(8px);
   position: fixed;
   left: 0;
   top: 0;

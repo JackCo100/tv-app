@@ -32,17 +32,16 @@ export const Details = () => {
   console.log("cast", cast);
   return (
     <Layout>
-      <Container>
+      <Container
+        style={{
+          backgroundImage: `url(${shows?.image?.original})`,
+          paddinngTop: "16px",
+        }}
+      >
         <FiChevronLeft
           onClick={() => window.history.back()}
           className={styles.backButton}
         />
-        <div
-          className={styles.backgroundImage}
-          style={{
-            backgroundImage: `url(${shows?.image?.original})`,
-          }}
-        ></div>
         <Grid>
           <Item xxlSpan={3} xlSpan={4} lgSpan={4} mdSpan={4} smSpan={4}>
             <div className={styles.imageContainer}>
@@ -71,16 +70,16 @@ export const Details = () => {
           </Item>
         </Grid>
       </Container>
-      <Container>
-        {seasons?.length > 0 && (
-          <>
+      {seasons?.length > 0 && (
+        <Container>
+          <div className={styles.episodesContainer}>
             <h2 className={styles.sectionTitle}>Episodes</h2>
             <Tabs
               tabs={seasons.map(([seasonNumber, episodes]) => ({
                 id: seasonNumber,
-                label: `Season ${seasonNumber}`,
+                label: `S${seasonNumber}`,
                 content: (
-                  <Grid className={styles.episodesContainer}>
+                  <Grid>
                     {episodes.map((episode) => (
                       <Item
                         key={episode.id}
@@ -103,10 +102,12 @@ export const Details = () => {
               activeTab={"1"}
               onTabChange={() => {}}
             />
-          </>
-        )}
-        {cast?.length > 0 && (
-          <div className={styles.castContainer}>
+          </div>
+        </Container>
+      )}
+      {cast?.length > 0 && (
+        <div className={styles.castContainer}>
+          <Container>
             <h2 className={styles.sectionTitle}>Cast</h2>
             <Grid>
               {cast.map((actor) => (
@@ -116,7 +117,7 @@ export const Details = () => {
                   xlSpan={2}
                   lgSpan={3}
                   mdSpan={2}
-                  smSpan={4}
+                  smSpan={2}
                 >
                   <img
                     src={actor.person?.image?.medium}
@@ -129,9 +130,9 @@ export const Details = () => {
                 </Item>
               ))}
             </Grid>
-          </div>
-        )}
-      </Container>
+          </Container>
+        </div>
+      )}
     </Layout>
   );
 };

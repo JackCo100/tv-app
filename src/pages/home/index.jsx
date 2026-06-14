@@ -1,4 +1,4 @@
-import { Grid, Item } from "../../components/Grid";
+import { Container, Grid, Item } from "../../components/Grid";
 import { Layout } from "../layout";
 import { useStore } from "../../store";
 import { Hero } from "../../components/Hero";
@@ -6,6 +6,7 @@ import { getShows } from "../../api";
 import { useEffect, useState } from "react";
 import { Carousel } from "../../components/Carousel";
 import { heroContent } from "../../content/hero";
+import styles from "./Home.module.css";
 
 export const Home = () => {
   const { shows, setShows } = useStore();
@@ -30,30 +31,27 @@ export const Home = () => {
     setGroupedShows(grouped);
   }, [shows]);
 
-  console.log("groupedShows", groupedShows, shows);
+  // console.log("groupedShows", groupedShows, shows);
   return (
     <Layout>
       <Hero title={heroContent.title} thumbnail={heroContent.thumbnail} />
-      <Grid>
-        <Item xxlSpan={12} xlSpan={12} lgSpan={12} mdSpan={8} smSpan={4}>
-          <div className={"mainContent"}>
-            <Grid>
-              {Object.keys(groupedShows).map((genre) => (
-                <Item
-                  key={genre}
-                  xxlSpan={12}
-                  xlSpan={12}
-                  lgSpan={12}
-                  mdSpan={8}
-                  smSpan={4}
-                >
-                  <Carousel title={genre} cards={groupedShows[genre]} />
-                </Item>
-              ))}
-            </Grid>
-          </div>
-        </Item>
-      </Grid>
+      {Object.keys(groupedShows).map((genre) => (
+        <Container className={`${styles.carouselSection}`} key={genre}>
+          <div className={styles.blurBackground}></div>
+          <Grid>
+            <Item
+              key={genre}
+              xxlSpan={12}
+              xlSpan={12}
+              lgSpan={12}
+              mdSpan={8}
+              smSpan={4}
+            >
+              <Carousel title={genre} cards={groupedShows[genre]} />
+            </Item>
+          </Grid>
+        </Container>
+      ))}
     </Layout>
   );
 };

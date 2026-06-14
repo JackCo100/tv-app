@@ -1,9 +1,10 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import { showsSlice } from './slices/showsSlice';
-import { filtersSlice } from './slices/filtersSlice';
-import { castSlice } from './slices/castSlice';
-import { alternativeShowsSlice } from './slices/alternativeShowsSlice';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
+import { showsSlice } from "./slices/showsSlice";
+import { filtersSlice } from "./slices/filtersSlice";
+import { castSlice } from "./slices/castSlice";
+import { alternativeShowsSlice } from "./slices/alternativeShowsSlice";
+import { headerSlice } from "./slices/headerSlice";
 
 export const useStore = create(
   devtools((set) => ({
@@ -11,5 +12,6 @@ export const useStore = create(
     ...filtersSlice(set),
     ...castSlice(set),
     ...alternativeShowsSlice(set),
+    ...headerSlice(set),
   })),
 );
